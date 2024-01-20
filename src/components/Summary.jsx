@@ -1,8 +1,6 @@
 const Summary = ({ state, length }) => {
   const totalPrice = state.reduce((acc, product) => acc + product.price, 0);
 
-  console.log(state);
-
   return (
     <div className="summary">
       <h1>
