@@ -12,8 +12,21 @@ function reducer(state, action) {
   switch (action.type) {
     case ACTIONS.ADD_PRODUCT:
       return [...state, { id: action.payload.id, price: action.payload.price }];
+
     case ACTIONS.REMOVE_PRODUCT:
-      return state.filter((product) => product.id !== action.payload.id);
+      // eslint-disable-next-line no-case-declarations
+      const indexToRemove = state.findIndex(
+        (product) => product.id === action.payload.id
+      );
+
+      if (indexToRemove !== -1) {
+        const newState = [...state];
+        newState.splice(indexToRemove, 1);
+        return newState;
+      }
+      return state;
+    default:
+      return state;
   }
 }
 
